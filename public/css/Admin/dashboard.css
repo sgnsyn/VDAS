@@ -1,0 +1,68 @@
+@import url("../reset.css");
+
+body {
+  padding-inline: 10%;
+}
+.container {
+  margin-inline: auto;
+  max-width: 68.07rem;
+}
+
+.navbar {
+  display: flex;
+  padding-block: 2.375rem;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-bottom: 4.5rem;
+}
+.p-role {
+  font-weight: bold;
+}
+.span-role {
+  text-transform: uppercase;
+}
+.span-username {
+  text-transform: lowercase;
+}
+.routes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16.25rem, 1fr));
+  gap: 3.8rem;
+}
+
+.btn {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+.logout-btn {
+  padding: 0.75rem 1rem;
+  border-radius: 100vw;
+  text-transform: capitalize;
+}
+.route-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  height: 9.5rem;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0.25rem 0.31rem 0.5rem 1px rgba(0, 0, 0, 0.3);
+
+  transition: transform 0.2s ease-in-out;
+}
+.route-btn-text {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.route-btn-icon {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+}
+
+.route-btn:hover {
+  transform: scale(1.025);
+}

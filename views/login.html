@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <script src="/js/login.js" defer></script>
+    <title>LogIn</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title-continaer">
+        <h1>VDAS</h1>
+        <p>Login using your credential.</p>
+      </div>
+      <form id="login-form">
+        <div id="input-container">
+          <input
+            class="inp"
+            type="text"
+            name="username"
+            id="username-inp"
+            placeholder="username"
+            required
+          />
+          <input
+            class="inp"
+            type="password"
+            name="password"
+            id="password-inp"
+            placeholder="password"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <button type="submit" id="login-btn">login</button>
+      </form>
+    </div>
+
+    <p id="error-p">&nbsp;</p>
+  </body>
+</html>
