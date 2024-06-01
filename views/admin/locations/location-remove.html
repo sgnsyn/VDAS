@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/Admin/locations/location_remove.css" />
+    <script type="module" src="/js/Admin/locations/location_remove.js" defer></script>
+    <title>edit/remove location</title>
+  </head>
+  <body>
+    <div class="popup-container backdrop disabled" id="menu-popup-container">
+      <div class="popup-btn-container">
+        <a href="/admin/dashboard" class="btn home-logout-btn home-btn">Home</a>
+        <a href="/logout" class="btn home-logout-btn logout-btn">Logout</a>
+        <button class="btn close-btn" id="close-logout-popup-btn">
+          <img src="/Assets/Icons/close.svg" alt="close" />
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="navbar">
+        <a class="btn back-btn" href="/locations/management"
+          ><img src="/Assets/Icons/back_arrow.svg" alt="back"
+        /></a>
+        <p class="p-titile">
+          <span>Edit / Remove Location</span>
+          <span><img src="/Assets/Icons/remove.svg" alt="remove-icon" /></span>
+        </p>
+        <button class="btn menu-btn" id="open-logout-popup-btn">
+          <img src="/Assets/Icons/menu.svg" alt="menu" />
+        </button>
+      </div>
+      <div class="search-filter-container">
+        <div class="search-inp-btn disabled">
+          <input class="search-inp" placeholder="search location" />
+        </div>
+      </div>
+      <table class="data-list-container" id="data-list-container-tabel"></table>
+    </div>
+    <!--  confirmation popup-->
+    <div class="confirmation-popup-backdrop disabled" id="confirmation-popup-backdrop">
+      <div class="confirmation-popup">
+        <p class="message" id="confirmation-popup-message"></p>
+        <table class="data-container" id="confirmation-popup-data"></table>
+        <div class="btn-container">
+          <button class="btn cancel-btn" id="cancel-confirmation-btn">cancel</button>
+          <button class="btn confirm-btn" id="confirm-confirmation-btn">
+            <span>confirm </span
+            ><img
+              src="/Assets/Icons/spinner.svg"
+              class="disabled"
+              alt="loading-icon"
+              id="spinner-icon"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,11 +1,6 @@
 const path = require("path");
 
-const {
-  add_user,
-  remove_user,
-  edit_user,
-  get_user,
-} = require("../../models/admin/user-model");
+const { add_user, remove_user, edit_user, get_user } = require("../../models/admin/user-model");
 const generate_id = require("../../util/id-generator");
 
 //@desc get all users
@@ -66,10 +61,7 @@ const delete_user = (req, res) => {
 //@route GET /management
 //@access private
 const user_management_page = async (req, res) => {
-  console.log("i'm executing");
-  res.sendFile(
-    path.join(__dirname, "../../views/admin/users", "user-management.html")
-  );
+  res.sendFile(path.join(__dirname, "../../views/admin/users", "user-management.html"));
 };
 
 module.exports = {

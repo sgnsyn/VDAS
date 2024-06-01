@@ -1,0 +1,8 @@
+@import url("../../reset.css");
+@import url("../util/navbar.css");
+@import url("../util/popup_menu.css");
+@import url("../util/grid_body.css");
+body {
+  padding-inline: 10%;
+  position: relative;
+}

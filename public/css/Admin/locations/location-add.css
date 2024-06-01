@@ -1,0 +1,63 @@
+@import url("../../reset.css");
+@import url("../util/navbar.css");
+@import url("../util/popup_menu.css");
+@import url("../util/popup_confirmation.css");
+
+body {
+  padding-inline: 10%;
+  position: relative;
+}
+
+.content-body-contianer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8.3rem;
+}
+
+#add-location-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+.input-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.25rem;
+}
+
+.input-label label {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.input-label .inp {
+  border: 1px solid black;
+  padding: 1rem 1.3rem;
+}
+.input-label input {
+  border-radius: 100vw;
+  width: 19.7rem;
+  margin-right: 3.9rem;
+}
+
+.input-label textarea {
+  border-radius: 1.5625rem;
+  width: 23.6rem;
+  resize: none;
+}
+
+.add-btn {
+  align-self: center;
+  margin-top: 1.25rem;
+  width: fit-content;
+  padding: 0.75rem 3.44rem;
+  transition: all 0.2s ease-in-out;
+  border-radius: 100vw;
+  font-weight: bold;
+}
+
+.add-btn:hover {
+  color: white;
+  background-color: black;
+}

@@ -34,8 +34,6 @@ async function form_submit_handler(e) {
   const result = await send_credential("/login/auth", { username, password });
   const data = await result.json();
 
-  console.log(data);
-
   if (data.success) {
     erro_p.innerHTML = `&nbsp;`;
     window.location.href = data.path;
@@ -49,6 +47,4 @@ async function form_submit_handler(e) {
 }
 
 form.addEventListener("submit", form_submit_handler);
-inputs.forEach((input) =>
-  input.addEventListener("input", () => (erro_p.innerHTML = `&nbsp;`))
-);
+inputs.forEach((input) => input.addEventListener("input", () => (erro_p.innerHTML = `&nbsp;`)));

@@ -57,13 +57,10 @@ const login_auth = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-  console.log("successfully logout");
   req.session.destroy((err) => {
     if (err) {
       console.error("Error destroying session:", err);
-      return res
-        .status(500)
-        .json({ success: false, message: "Error logging out" });
+      return res.status(500).json({ success: false, message: "Error logging out" });
     }
     res.redirect("/login");
   });

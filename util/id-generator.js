@@ -1,4 +1,4 @@
-const generate_id = () => {
+const generate_id = (type) => {
   let pk = "";
   const arr = [
     "A",
@@ -38,10 +38,10 @@ const generate_id = () => {
     9,
     0,
   ];
-  for (let i = 0; i < 11; i++) {
+  for (let i = 0; i < 8; i++) {
     let index = Math.floor(Math.random() * 35);
     pk += arr[index];
   }
-  return pk;
+  return type + pk;
 };
 module.exports = generate_id;

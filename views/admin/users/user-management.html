@@ -3,9 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/Admin/users/user-management.css" />
+    <script type="module" src="/js/Admin/users/user-management.js" defer></script>
+    <title>User management</title>
   </head>
   <body>
-    <h1>manage users</h1>
+    <div class="popup-container backdrop disabled" id="menu-popup-container">
+      <div class="popup-btn-container">
+        <a href="/admin/dashboard" class="btn home-logout-btn home-btn">Home</a>
+        <a href="/logout" class="btn home-logout-btn logout-btn">Logout</a>
+        <button class="btn close-btn" id="close-logout-popup-btn">
+          <img src="/Assets/Icons/close.svg" alt="close" />
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="navbar">
+        <a class="btn back-btn" href="/admin/dashboard"
+          ><img src="/Assets/Icons/back_arrow.svg" alt="back"
+        /></a>
+        <p class="p-titile">
+          <span>Manage users</span>
+          <span><img src="/Assets/Icons/user_group.svg" alt="users-icon" /></span>
+        </p>
+        <button class="btn menu-btn" id="open-logout-popup-btn">
+          <img src="/Assets/Icons/menu.svg" alt="menu" />
+        </button>
+      </div>
+      <div class="routes-container">
+        <a class="btn grid-btn" href="/users/add"
+          ><span class="grid-btn-text">Add users</span
+          ><span class="grid-btn-icon"><img src="/Assets/Icons/add.svg" alt="add-icon" /></span
+        ></a>
+
+        <a class="btn grid-btn" href="/users/remove"
+          ><span class="grid-btn-text"> Edit / Remove users</span
+          ><span class="grid-btn-icon"
+            ><img src="/Assets/Icons/remove.svg" alt="remove-icon" /></span
+        ></a>
+      </div>
+    </div>
   </body>
 </html>

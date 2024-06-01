@@ -1,0 +1,113 @@
+@import url("../../reset.css");
+@import url("../util/navbar.css");
+@import url("../util/popup_menu.css");
+@import url("../util/popup_confirmation.css");
+
+.disabled {
+  display: none;
+}
+
+body {
+  padding-inline: 10%;
+  position: relative;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+/* search and filter  */
+.search-filter-container {
+  padding-block: 2rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.search-inp-btn {
+  position: relative;
+}
+
+.search-inp-btn .search-inp {
+  width: 14.3125rem;
+  padding-left: 1.25rem;
+  padding-right: 2rem;
+  padding-block: 1rem;
+  border-radius: 100vw;
+  border: 1px solid black;
+}
+
+.search-inp-btn .search-btn {
+  position: absolute;
+  background-color: transparent;
+  padding-inline: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  top: 0;
+  right: 0;
+  height: 100%;
+  border: none;
+  border-left: 1px solid black;
+  border-top-right-radius: 100vw;
+  border-bottom-right-radius: 100vw;
+}
+
+/* the tabel */
+
+table {
+  margin-inline: auto;
+  border-collapse: collapse;
+  font-weight: bold;
+}
+thead {
+  border-bottom: 1px solid black;
+}
+tbody tr:nth-child(even) {
+  background-color: #e9e9e9;
+}
+
+tr td {
+  padding-block: 1.1875rem;
+  padding-inline: 3rem;
+  word-wrap: break-word;
+  word-break: break-word;
+  box-sizing: content-box;
+}
+tr td:nth-child(1) {
+  width: 13ch;
+}
+tr td:nth-child(2) {
+  width: 42ch;
+}
+
+.data-list-container .btn-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.data-list-container .btn {
+  padding: 0.67rem 2rem;
+  border-radius: 100vw;
+  text-transform: capitalize;
+  transition: all 0.2s ease-in-out;
+}
+.data-list-container .btn:hover {
+  color: white;
+  background-color: black;
+}
+
+.data-list-container .delete-btn {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.inform-p {
+  font-size: 10rem;
+  text-align: center;
+  color: var(--inform-color);
+  width: 7ch;
+  margin-top: 2rem;
+  margin-inline: auto;
+  opacity: 0.5;
+}

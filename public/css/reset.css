@@ -3,6 +3,12 @@
   src: url("../Assets/Fonts/nunito.ttf") format("truetype");
 }
 
+:root {
+  --inform-color: black;
+  --success-color: #03a65a;
+  --error-color: #db3056;
+}
+
 *,
 *::before,
 *::after {
@@ -27,4 +33,8 @@ video {
 
 body {
   min-height: 100vh;
+}
+.container {
+  margin-inline: auto;
+  max-width: 68.07rem;
 }
