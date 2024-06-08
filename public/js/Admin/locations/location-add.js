@@ -3,8 +3,8 @@ import {
   handle_spinner,
   display_confirmation_popup,
   set_conf_message,
-} from "../util/popup_confirmation.js";
-import { popup_handler } from "../util/popup_menu.js";
+} from "../util/popup-confirmation.js";
+import { popup_handler } from "../util/popup-menu.js";
 
 const form = document.getElementById("add-location-form");
 

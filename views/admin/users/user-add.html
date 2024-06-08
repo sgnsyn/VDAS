@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/Admin/users/user-add.css" />
+    <script type="module" src="/js/Admin/users/user-add.js" defer></script>
+    <title>Add user</title>
+  </head>
+  <body>
+    <div class="popup-container backdrop disabled" id="menu-popup-container">
+      <div class="popup-btn-container">
+        <a href="/admin/dashboard" class="btn home-logout-btn home-btn">Home</a>
+        <a href="/logout" class="btn home-logout-btn logout-btn">Logout</a>
+        <button class="btn close-btn" id="close-logout-popup-btn">
+          <img src="/Assets/Icons/close.svg" alt="close" />
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="navbar">
+        <a class="btn back-btn" href="/users/management"><img src="/Assets/Icons/back_arrow.svg" alt="back" /></a>
+        <p class="p-titile">
+          <span>Add locations</span>
+          <span><img src="/Assets/Icons/add.svg" alt="add-icon" /></span>
+        </p>
+        <button class="btn menu-btn" id="open-logout-popup-btn">
+          <img src="/Assets/Icons/menu.svg" alt="menu" />
+        </button>
+      </div>
+      <form id="form">
+        <div class="col-1">
+          <div class="label-input-container">
+            <label for="first-name-inp">first name:</label>
+            <input type="text" id="first-name-inp" name="first_name" autocomplete="off" required />
+          </div>
+          <div class="label-input-container">
+            <label for="middle-name-inp">middle name:</label>
+            <input type="text" id="middle-name-inp" name="middle_name" autocomplete="off" required />
+          </div>
+          <div class="label-input-container">
+            <label for="last-name-inp">last name:</label>
+            <input type="text" id="last-name-inp" name="last_name" autocomplete="off" required />
+          </div>
+          <div class="label-input-container" name="divi">
+            <label for="last-username-inp">username name:</label>
+            <input type="text" id="last-username-inp" name="user_name" autocomplete="off" required />
+          </div>
+          <div class="label-input-container">
+            <label for="password-inp">password:</label>
+            <input type="text" id="password-inp" name="password" autocomplete="off" required />
+          </div>
+          <div class="label-input-container">
+            <label for="confirm-password-inp">confirm password:</label>
+            <input type="text" id="confirm-password-inp" name="confirm_password" autocomplete="off" required />
+          </div>
+          <div class="role-label-select-container label-input-container">
+            <label for="role-select">role:</label>
+            <select id="role-select" name="role" required>
+              <option value="gp" selected>Ground Personnel</option>
+              <option value="op">Office Personnel</option>
+              <option value="a">Admin</option>
+            </select>
+            <span class="down-arrow"><img src="/Assets/Icons/down_arrow.svg" alt="" /></span>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="shift-location">
+            <div class="shift-days-schedule-container">
+              <div class="shift-days-contianer">
+                <label for="shift-buttons">Shift:</label>
+
+                <div class="shift-buttons">
+                  <button type="button" class="btn weekend-shift-btn" id="monday-shift-btn" data-day="mo" selected>
+                    <p>mo</p>
+                  </button>
+                  <button type="button" class="btn weekend-shift-btn" id="tuesday-shift-btn" data-day="tu">
+                    <p>tu</p>
+                  </button>
+                  <button type="button" class="btn weekend-shift-btn" id="wednesday-shift-btn" data-day="we">
+                    <p>we</p>
+                  </button>
+                  <button type="button" class="btn weekend-shift-btn" id="thursday-shift-btn" data-day="th">
+                    <p>th</p>
+                  </button>
+                  <button type="button" class="btn weekend-shift-btn" id="friday-shift-btn" data-day="fr">
+                    <p>fr</p>
+                  </button>
+                  <button type="button" class="btn weekend-shift-btn" id="saturday-shift-btn" data-day="sa">
+                    <p>sa</p>
+                  </button>
+                  <button type="button" class="btn weekend-shift-btn" id="sunday-shift-btn" data-day="su">
+                    <p>su</p>
+                  </button>
+                </div>
+              </div>
+              <div class="shift-schedule-container">
+                <div class="weekend-schedule monday-schedule" data-day="mo">
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="monday-schedule"
+                    id="monday-day-schedule"
+                    data-day="mo"
+                    data-value="morning"
+                  >
+                    06:00 - 14:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="monday-schedule"
+                    id="monday-evening-schedule"
+                    data-day="mo"
+                    data-value="evening"
+                  >
+                    14:00 - 20:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="monday-schedule"
+                    id="monday-night-schedule"
+                    data-day="mo"
+                    data-value="night"
+                  >
+                    20:00 - 06:00
+                  </button>
+                </div>
+                <div class="weekend-schedule tuesday-schedule disabled" data-day="tu">
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="tuesday-schedule"
+                    id="tuesday-day-schedule"
+                    data-day="tu"
+                    data-value="morning"
+                  >
+                    06:00 - 14:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="tuesday-schedule"
+                    id="tuesday-evening-schedule"
+                    data-day="tu"
+                    data-value="evening"
+                  >
+                    14:00 - 20:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="tuesday-schedule"
+                    id="tuesday-night-schedule"
+                    data-day="tu"
+                    data-value="night"
+                  >
+                    20:00 - 06:00
+                  </button>
+                </div>
+                <div class="weekend-schedule wednesday-schedule disabled" data-day="we">
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="wednesday-schedule"
+                    id="wednesday-day-schedule"
+                    data-day="we"
+                    data-value="morning"
+                  >
+                    06:00 - 14:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="wednesday-schedule"
+                    id="wednesday-evening-schedule"
+                    data-day="we"
+                    data-value="evening"
+                  >
+                    14:00 - 20:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="wednesday-schedule"
+                    id="wednesday-night-schedule"
+                    data-day="we"
+                    data-value="night"
+                  >
+                    20:00 - 06:00
+                  </button>
+                </div>
+                <div class="weekend-schedule thursday-schedule disabled" data-day="th">
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="thursday-schedule"
+                    id="thursday-day-schedule"
+                    data-day="th"
+                    data-value="morning"
+                  >
+                    06:00 - 14:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="thursday-schedule"
+                    id="thursday-evening-schedule"
+                    data-day="th"
+                    data-value="evening"
+                  >
+                    14:00 - 20:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="thursday-schedule"
+                    id="thursday-night-schedule"
+                    data-day="th"
+                    data-value="night"
+                  >
+                    20:00 - 06:00
+                  </button>
+                </div>
+                <div class="weekend-schedule friday-schedule disabled" data-day="fr">
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="friday-schedule"
+                    id="friday-day-schedule"
+                    data-day="fr"
+                    data-value="morning"
+                  >
+                    06:00 - 14:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="friday-schedule"
+                    id="friday-evening-schedule"
+                    data-day="fr"
+                    data-value="evening"
+                  >
+                    14:00 - 20:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="friday-schedule"
+                    id="friday-night-schedule"
+                    data-day="fr"
+                    data-value="night"
+                  >
+                    20:00 - 06:00
+                  </button>
+                </div>
+                <div class="weekend-schedule saturday-schedule disabled" data-day="sa">
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="saturday-schedule"
+                    id="saturday-day-schedule"
+                    data-day="sa"
+                    data-value="morning"
+                  >
+                    06:00 - 14:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="saturday-schedule"
+                    id="saturday-evening-schedule"
+                    data-day="sa"
+                    data-value="evening"
+                  >
+                    14:00 - 20:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="saturday-schedule"
+                    id="saturday-night-schedule"
+                    data-day="sa"
+                    data-value="night"
+                  >
+                    20:00 - 06:00
+                  </button>
+                </div>
+                <div class="weekend-schedule sunday-schedule disabled" data-day="su">
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="sunday-schedule"
+                    id="sunday-day-schedule"
+                    data-day="su"
+                    data-value="morning"
+                  >
+                    06:00 - 14:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="sunday-schedule"
+                    id="sunday-evening-schedule"
+                    data-day="su"
+                    data-value="evening"
+                  >
+                    14:00 - 20:00
+                  </button>
+
+                  <button
+                    type="button"
+                    class="weekend-schedule-radio btn"
+                    name="sunday-schedule"
+                    id="sunday-night-schedule"
+                    data-day="su"
+                    data-value="night"
+                  >
+                    20:00 - 06:00
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="locations-container">
+              <label for="search-location-input">Location:</label>
+
+              <div class="location-search-select">
+                <div class="location-search-container">
+                  <div class="autocomplete-contianer disabled"></div>
+                  <input type="text" placeholder="search location" class="search-inp" />
+                </div>
+                <span>or</span>
+                <div class="select-location-select">
+                  <select name="select-location" id="location-select">
+                    <option value="null" disabled selected>Select Location</option>
+                  </select>
+                  <span class="down-arrow"><img src="/Assets/Icons/down_arrow.svg" alt="" /></span>
+                </div>
+              </div>
+
+              <div class="selected-location-day-container">
+                <div class="selected-location-container selected-location-container-monday" data-day="mo"></div>
+                <div
+                  class="selected-location-container selected-location-container-tuesday disabled"
+                  data-day="tu"
+                ></div>
+                <div
+                  class="selected-location-container selected-location-container-wednesday disabled"
+                  data-day="we"
+                ></div>
+                <div
+                  class="selected-location-container selected-location-container-thursday disabled"
+                  data-day="th"
+                ></div>
+                <div
+                  class="selected-location-container selected-location-container-friday disabled"
+                  data-day="fr"
+                ></div>
+                <div
+                  class="selected-location-container selected-location-container-saturday disabled"
+                  data-day="sa"
+                ></div>
+                <div
+                  class="selected-location-container selected-location-container-sunday disabled"
+                  data-day="su"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-container">
+          <button type="submit" class="btn submit-btn hover-btn" id="submit-btn">create users</button>
+        </div>
+        <div id="error-p-contianer">
+          <p id="error-p"></p>
+        </div>
+      </form>
+    </div>
+
+    <!--  confirmation popup-->
+    <div class="confirmation-popup-backdrop disabled" id="confirmation-popup-backdrop">
+      <div class="confirmation-popup">
+        <p class="message" id="confirmation-popup-message"></p>
+        <table class="data-container" id="confirmation-popup-data"></table>
+        <div class="btn-container">
+          <button class="btn cancel-btn" id="cancel-confirmation-btn">cancel</button>
+          <button class="btn confirm-btn" id="confirm-confirmation-btn">
+            <span>confirm </span
+            ><img src="/Assets/Icons/spinner.svg" class="disabled" alt="loading-icon" id="spinner-icon" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <input type="text" id="error-inp" tabindex="-1" />
+    <!-- erro p checker -->
+  </body>
+</html>

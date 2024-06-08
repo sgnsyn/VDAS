@@ -1,0 +1,31 @@
+@import url("../reset.css");
+@import url("../ground_personnel/util/popup-menu.css");
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.375rem;
+  border-bottom: 1px solid black;
+}
+
+.btn {
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.close-btn,
+.menu-btn {
+  background-color: transparent;
+  border: none;
+}
+.nav-back-btn {
+  border: 1px solid black;
+  display: block;
+  padding: 0.625rem 1.2rem;
+  border-radius: 100vw;
+}
+
+.body {
+  padding: 2.0625rem;
+}

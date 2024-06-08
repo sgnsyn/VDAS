@@ -1,0 +1,334 @@
+@import url("../../reset.css");
+@import url("../util/navbar.css");
+@import url("../util/popup-menu.css");
+@import url("../util/popup-confirmation.css");
+
+/* keep an eye on this one */
+button * {
+  pointer-events: none;
+}
+
+.navbar {
+  margin-bottom: 3rem;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 1rem 2rem;
+  place-content: center;
+}
+
+label {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block: 1rem;
+  grid-column: 1;
+}
+#error-p-contianer {
+  display: grid;
+  place-content: center;
+  position: relative;
+}
+#error-p-contianer p {
+  position: absolute;
+  min-width: 25ch;
+  top: 50%;
+  left: 10%;
+  transform: translate(0%, -50%);
+}
+
+/* col-1 and its elements */
+.col-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.label-input-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.label-input-container label {
+  width: 17ch;
+}
+.label-input-container input {
+  width: 19.57rem;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  border-radius: 100vw;
+  border: 1px solid black;
+}
+
+/* col-2 and its elements */
+.col-2,
+.shift-location {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.role-label-select-container {
+  display: flex;
+  align-items: center;
+  gap: 2.375rem;
+  width: fit-content;
+  position: relative;
+}
+
+.role-label-select-container .down-arrow,
+.select-location-select .down-arrow {
+  display: block;
+  position: absolute;
+  height: 90%;
+  width: 3rem;
+  top: 50%;
+  right: 3px;
+  transform: translate(0%, -50%);
+
+  background-color: white;
+  border-top-right-radius: 100vw;
+  border-bottom-right-radius: 100vw;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+#role-select {
+  width: 19.57rem;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid black;
+}
+
+#role-select option {
+  padding-block: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/*col-2 shifts  */
+.shift-days-contianer {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 1rem;
+}
+label[for="shift-buttons"] {
+  display: block;
+  margin-bottom: 1.7rem;
+}
+/* col-2 shifts schedule */
+
+.shift-days-schedule-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.shift-buttons {
+  display: flex;
+  gap: 1.25rem;
+  align-self: center;
+}
+
+.shift-buttons .btn {
+  width: 2ch;
+  height: 2ch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+
+  border-radius: 50%;
+  border: 1px solid black;
+  text-transform: capitalize;
+}
+
+.weekend-shift-btn[highlight] {
+  position: relative;
+}
+.weekend-shift-btn[highlight]::before {
+  content: "";
+  width: 50%;
+  height: 0.3rem;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border-radius: 100vw;
+  background-color: black;
+}
+
+.weekend-schedule {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.weekend-schedule button {
+  padding: 0.5rem 1.5rem;
+  text-transform: capitalize;
+  border-radius: 100vw;
+}
+.weekend-schedule .weekday-title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#error-p {
+  color: var(--error-color);
+  text-align: center;
+  font-weight: bold;
+}
+#error-inp {
+  border: none;
+  background-color: transparent;
+  outline: 1px solid red;
+  position: absolute;
+  top: -3rem;
+  left: -3rem;
+}
+#error-inp:focus {
+  border: none;
+  outline: 1px solid red;
+  background-color: transparent;
+  pointer-events: none;
+}
+#error-p[disabled] {
+  background-color: transparent;
+}
+/* location serach select */
+label[for="search-location-input"] {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.selected-location-container {
+  margin-top: 1rem;
+}
+.selected-location {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  padding-right: 3rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  border-top-left-radius: 100vw;
+  border-bottom-left-radius: 100vw;
+}
+.selected-location span {
+  text-transform: capitalize;
+}
+.delete-selected-location-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-left: 1px solid black;
+}
+.location-search-select {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.location-search-select input {
+  width: 15rem;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  border-radius: 100vw;
+  border: 1px solid black;
+}
+
+.location-search-container {
+  position: relative;
+}
+.autocomplete-contianer {
+  position: absolute;
+  width: 100;
+  top: 120%;
+  width: 100%;
+  box-shadow: 0px 0px 1rem 0.5rem rgba(0, 0, 0, 0.3);
+  max-height: 14rem;
+  overflow-y: scroll;
+  z-index: 5;
+}
+.autocomplete-contianer .btn {
+  width: 100%;
+  text-align: start;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border: none;
+}
+.autocomplete-contianer .btn:nth-child(even) {
+  background-color: #e9e9e9;
+}
+.autocomplete-contianer .btn p {
+  transform-origin: left;
+  transition: all 0.2s ease-in-out;
+}
+.autocomplete-contianer .btn:hover p {
+  transform: scale(0.9);
+  opacity: 0.75;
+}
+/* location select */
+.select-location-select {
+  position: relative;
+}
+.location-search-select select {
+  width: 15rem;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid black;
+}
+.location-search-select option {
+  padding-block: 1rem;
+  font-size: 1.2rem;
+  font-weight: light;
+}
+#location-select option:nth-child(even) {
+  background-color: #e9e9e9;
+}
+
+/* create user btn */
+.submit-btn {
+  padding: 0.75rem 2rem;
+  border-radius: 100vw;
+  text-transform: capitalize;
+}
+
+/* properties */
+.disabled {
+  display: none !important;
+}
+
+button[selected] {
+  background-color: black;
+  color: white;
+}
+
+.hover-btn2 p {
+  transform-origin: left;
+  transition: all 0.2s ease-in-out;
+}
+
+.hover-btn2:hover p {
+  transform: scale(0.9);
+  opacity: 0.75;
+}

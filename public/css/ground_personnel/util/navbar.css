@@ -1,10 +1,3 @@
-@import url("../reset.css");
-@import url("./util/grid-body.css");
-
-body {
-  padding-inline: 10%;
-}
-
 .navbar {
   display: flex;
   padding-block: 2.375rem;
@@ -13,23 +6,24 @@ body {
   border-bottom: 1px solid black;
   margin-bottom: 4.5rem;
 }
-.p-role {
-  font-weight: bold;
-}
-.span-role {
-  text-transform: uppercase;
-}
-.span-username {
-  text-transform: lowercase;
-}
 
 .btn {
   background-color: white;
   color: black;
   border: 1px solid black;
+  cursor: pointer;
 }
-.logout-btn {
-  padding: 0.75rem 1rem;
+.navbar .back-btn {
+  padding: 0.75rem 2rem;
   border-radius: 100vw;
   text-transform: capitalize;
+}
+.navbar .p-titile {
+  display: flex;
+  gap: 1rem;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.navbar .menu-btn {
+  border: none;
 }

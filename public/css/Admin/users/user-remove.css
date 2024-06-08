@@ -1,4 +1,8 @@
 @import url("../../reset.css");
 @import url("../util/navbar.css");
 @import url("../util/popup-menu.css");
-@import url("../util/grid-body.css");
+@import url("../util/popup-confirmation.css");
+
+body {
+  background-color: green;
+}

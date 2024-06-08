@@ -1,7 +1,7 @@
 @import url("../../reset.css");
 @import url("../util/navbar.css");
-@import url("../util/popup_menu.css");
-@import url("../util/popup_confirmation.css");
+@import url("../util/popup-menu.css");
+@import url("../util/popup-confirmation.css");
 
 .disabled {
   display: none;

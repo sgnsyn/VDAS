@@ -1,0 +1,170 @@
+.confirmation-popup-backdrop {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(0.25rem);
+}
+.confirmation-popup {
+  background-color: white;
+  max-width: 80%;
+  padding: 4.25rem;
+  position: relative;
+  border-radius: 3.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  border: 1px solid black;
+}
+
+.confirmation-popup .data-container {
+  border-spacing: 1.8rem 1rem;
+}
+
+.confirmation-popup .message {
+  font-weight: bold;
+  font-size: 1.25rem;
+  max-width: 25ch;
+  text-align: center;
+}
+.confirmation-popup .message.inform {
+  color: var(--inform-color);
+}
+.confirmation-popup .message.error {
+  color: var(--error-color);
+}
+.confirmation-popup .message.success {
+  color: var(--success-color);
+}
+
+.confirmation-popup .title {
+  text-transform: capitalize;
+  vertical-align: top;
+}
+.confirmation-popup .value {
+  font-weight: bold;
+  max-width: 32ch;
+}
+.confirmation-popup .btn-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.confirmation-popup .btn {
+  width: 7ch;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: bold;
+  padding: 0.75rem 3.375rem;
+  box-sizing: content-box;
+  border-radius: 100vw;
+  transition: all 0.2s ease-in-out;
+}
+
+.confirmation-popup .btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.confirmation-popup .confirm-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.confirmation-popup #spinner-icon {
+  position: absolute;
+  right: 1rem;
+}
+.confirmation-popup #spinner-icon.spin {
+  animation: spin 1000ms infinite;
+}
+.confirmation-popup #spinner-icon.disabled {
+  animation: none;
+  display: none;
+}
+
+/* animations */
+.confirmation-popup-backdrop.disabled {
+  display: none;
+}
+.confirmation-popup-backdrop.deactive {
+  animation: fade-out 300ms forwards;
+}
+.confirmation-popup-backdrop.active {
+  animation: fade-in 300ms forwards;
+}
+
+.confirmation-popup-backdrop.deactive .confirmation-popup {
+  animation: scale-out 300ms forwards;
+}
+.confirmation-popup-backdrop.active .confirmation-popup {
+  animation: scale-in 300ms forwards;
+}
+
+.confirmation-popup .btn:disabled {
+  background-color: white;
+  color: #afafaf;
+  border-color: #afafaf;
+}
+.confirmation-popup .btn:disabled:hover {
+  background-color: white;
+  color: #afafaf;
+  border-color: #afafaf !important;
+  cursor: auto;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-out {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.5);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

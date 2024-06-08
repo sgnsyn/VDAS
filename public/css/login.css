@@ -57,3 +57,24 @@ h1 {
   color: #d32f2f;
   text-align: center;
 }
+
+@media (max-width: 600px) {
+  .container {
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+  }
+  .login-text {
+    max-width: fit;
+  }
+  #login-form {
+    align-self: center;
+  }
+  #error-p {
+    max-width: fit-content;
+  }
+  .container {
+    min-width: fit-content;
+    align-items: flex-start;
+  }
+}

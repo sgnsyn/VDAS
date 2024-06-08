@@ -49,8 +49,8 @@ app.use(
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
 app.use(is_authenticated);
 
@@ -63,5 +63,8 @@ app.use("/cctv", is_authorized("admin"), require("./routes/admin/cctv"));
 app.use("/locations", is_authorized("admin"), require("./routes/admin/locations"));
 app.use("/reports", is_authorized("admin"), require("./routes/admin/reports"));
 
-//groupnd personnel routes
+//ground personnel routes
 app.use("/ground_personnel", require("./routes/ground_personnel/dashboard"));
+
+//office routes
+app.use("/office", require("./routes/office_personnel/office"));

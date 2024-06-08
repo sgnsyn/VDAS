@@ -1,4 +1,6 @@
 const path = require("path");
+
+const { b_compare } = require("../util/password-hash-compare");
 const { get_credential } = require("../models/admin/user-model");
 
 //@desc get login.html
@@ -13,7 +15,11 @@ const get_login_page = async (req, res) => {
 //@access public
 const login_auth = async (req, res) => {
   //authenticator should be added
-  const { username, password } = req.body;
+  let { username, password } = req.body;
+  username = username.trim();
+  if (!username || !password) {
+    return res.status(401).json({ success: false, message: "Invalid entry , please try again with valid value." });
+  }
 
   if (username && password) {
     const user_db = await get_credential(username);
@@ -25,7 +31,12 @@ const login_auth = async (req, res) => {
       });
     }
 
-    if (!(password === user_db.password_hashed)) {
+    // get hashsed password and compare with plain text
+    const password_validty = await b_compare(password, user_db.password_hashed);
+    if (password_validty === "err") {
+      return res.status(500).json({ success: false, message: "Internal error, try again later." });
+    }
+    if (!password_validty) {
       return res.status(401).json({
         success: false,
         message: "Invalid password, try again with valid password!",

@@ -1,16 +1,15 @@
-import { popup_handler } from "../util/popup_menu.js";
+import { popup_handler } from "../util/popup-menu.js";
 import {
   close_popup_conf,
   handle_spinner,
   display_confirmation_popup,
   set_conf_message,
-} from "../util/popup_confirmation.js";
+} from "../util/popup-confirmation.js";
 
 const tabel = document.getElementById("data-list-container-tabel");
 const search_inp = document.querySelector(".search-inp");
 const search_contianer = document.querySelector(".search-inp-btn");
 
-const search_btn = document.querySelector(".search-btn");
 let locations = [];
 
 /******************************************** FUNCTION  ***************************************/

@@ -6,7 +6,7 @@
 :root {
   --inform-color: black;
   --success-color: #03a65a;
-  --error-color: #db3056;
+  --error-color: #b50000;
 }
 
 *,
@@ -37,4 +37,22 @@ body {
 .container {
   margin-inline: auto;
   max-width: 68.07rem;
+}
+
+.hover-btn {
+  transition: all 0.2s ease-in-out;
+}
+
+.hover-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+  body {
+    min-height: 80vh;
+  }
 }
