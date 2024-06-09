@@ -1,23 +1,47 @@
 const express = require("express");
-const path = require("path");
 const session = require("express-session");
-const error_handler = require("./middlewares/error-handler");
-const db_connection = require("./config/db-connection");
+const path = require("path");
 const bodyParser = require("body-parser");
-const is_authenticated = require("./middlewares/authenticate");
-const is_authorized = require("./middlewares/authorize");
 const dotenv = require("dotenv").config();
 const MySQLStore = require("express-mysql-session")(session);
+const http = require("http");
+
+const db_connection = require("./config/db-connection");
+const is_authenticated = require("./middlewares/authenticate");
+const is_authorized = require("./middlewares/authorize");
 
 const port = process.env.PORT || 5000;
 const app = express();
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+
+const io = new Server(server);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`listening on port ${port} `);
 });
+
+//  socket stuff
+app.io = io;
+io.session_map = {};
+io.on("connection", (socket) => {
+  socket.emit("request_id");
+  socket.on("get_id", (id) => {
+    io.session_map[id] = socket.id;
+  });
+
+  socket.on("disconnect", () => {
+    for (let key of Object.keys(io.session_map)) {
+      if (io.session_map[key] === socket.id) {
+        delete io.session_map[key];
+      }
+    }
+  });
+});
+// socket stuff
 
 const sessionConnection = db_connection;
 const sessionStore = new MySQLStore(
@@ -50,7 +74,7 @@ app.use(
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "50  mb" }));
 
 app.use(is_authenticated);
 

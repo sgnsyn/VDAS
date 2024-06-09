@@ -48,6 +48,7 @@ const login_auth = async (req, res) => {
       username: user_db.username,
       role: user_db.role,
     };
+
     let path = null;
     if (req.session.user.role === "admin") {
       path = `/admin/dashboard`;

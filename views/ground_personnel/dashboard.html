@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/ground_personnel/dashboard.css" />
+    <script src="/socket.io/socket.io.js" defer></script>
     <script type="module" src="/js/ground_personnel/dashboard.js" defer></script>
     <title>Dashboard</title>
   </head>
@@ -26,15 +27,39 @@
         </button>
       </div>
       <div class="body">
-        <div class="no-alert-container disabled"><p class="title">No Ongoing Threat</p></div>
-        <div class="alert-container">
+        <div class="no-alert-title-container"><p class="title">No Ongoing Threat</p></div>
+        <div class="alert-title-container disabled">
           <div class="title-time-container">
             <p class="title">New Alert</p>
-            <p class="time-ellapsed">5 minutes ago</p>
+            <p class="time-ellapsed"></p>
           </div>
-          <a href="/ground_personnel/alert"><button id="more-detail-btn" class="btn">View Details</button></a>
+          <button id="more-detail-btn" class="btn">View Details</button>
+        </div>
+        <div class="alert-container disabled">
+          <div class="video-container">
+            <video id="video-player" width="320" height="240" controls>
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="info-container">
+            <div class="title-value-container">
+              <p class="info-title">Recorded Time</p>
+              <p class="info_value" id="timer-p"></p>
+            </div>
+
+            <div class="title-value-container">
+              <p class="info-title">Location</p>
+              <div id="locations-container"></div>
+            </div>
+            <div class="title-value-container">
+              <p class="info-title">Camera no.</p>
+              <p class="info_value"><span>Cam ID </span><span id="camera-id"></span></p>
+            </div>
+          </div>
+          <button class="btn resolve-btn">Resolve</button>
         </div>
       </div>
     </div>
+    <input type="text" id="err-inp" />
   </body>
 </html>
