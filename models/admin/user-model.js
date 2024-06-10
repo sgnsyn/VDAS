@@ -37,17 +37,6 @@ const edit_user = (id, username, psk, role) => {
   });
 };
 
-// removes user from database
-const remove_user = (id) => {
-  const query_str = `DELETE FROM users WHERE id = ?`;
-  const values = [id];
-  db_connection.query(query_str, values, (err, result, fields) => {
-    if (err) {
-      console.log("error in admin user-model, remove_user", err);
-    }
-  });
-};
-
 // fetches user password by username
 const get_credential = async (username) => {
   return new Promise((resolve, reject) => {
@@ -230,13 +219,40 @@ const add_user_location_shift = async (user_id, formatted_shift) => {
   }
   return result;
 };
+const load_all_users = async () => {
+  return new Promise((resolve, reject) => {
+    const query_str = "SELECT username, role FROM users ORDER BY id DESC";
 
+    db_connection.query(query_str, (err, result, fields) => {
+      if (err) {
+        console.log(err, "error in admin location-model, get_all_location");
+        return reject(err);
+      }
+      return resolve(result);
+    });
+  });
+};
+
+// removes user from database
+const remove_user = async (username) => {
+  return new Promise((resolve, reject) => {
+    const query_str = `DELETE FROM users WHERE username = ? LIMIT 1`;
+    const values = [username];
+    db_connection.query(query_str, values, (err, result, fields) => {
+      if (err) {
+        console.log("error in admin location-model, remove_location", err);
+        return reject(err);
+      }
+      return resolve();
+    });
+  });
+};
 module.exports = {
   add_user,
   get_usernames,
   edit_user,
   remove_user,
-
+  load_all_users,
   get_credential,
   get_full_user_name,
   add_user_shift,

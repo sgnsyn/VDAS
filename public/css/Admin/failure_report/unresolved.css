@@ -1,0 +1,46 @@
+@import url("../../reset.css");
+@import url("../util/navbar.css");
+@import url("../util/popup-menu.css");
+@import url("../util/grid-body.css");
+body {
+  padding-inline: 10%;
+  position: relative;
+}
+
+.body-continaer {
+  padding-inline: 2.125rem;
+}
+
+.resolve-continaer {
+  border: 1px solid black;
+  border-radius: 1rem;
+  margin-bottom: 2.625rem;
+  padding: 1.375rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0.25rem 0.31rem 0.5rem 1px rgba(0, 0, 0, 0.3);
+}
+.title-value-container {
+  margin-bottom: 0.75;
+  display: flex;
+}
+
+.title-value-container .title {
+  min-width: 12ch;
+  margin-right: 2rem;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.title-value-container .value {
+  text-transform: capitalize;
+}
+
+.mark-resolved-btn {
+  width: fit-content;
+  align-self: flex-end;
+  background-color: black;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 100vw;
+  margin-top: 2.25rem;
+}

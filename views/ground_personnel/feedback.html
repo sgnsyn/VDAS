@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>feedback</title>
+  </head>
+  <body>
+    <a class="btn back-btn" href="/ground_personnel/dashboard"
+      ><img src="/Assets/Icons/back_arrow.svg" alt="back"
+    /></a>
+    <form>
+      <p>feedback:</p>
+      <textarea rows="7" id="feedback-text-area" name="textarea" required minlength="10"></textarea>
+      <button class="btn send-feedback-btn">send feedback</button>
+    </form>
+    <style>
+      @import url("/css/reset.css");
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        position: relative;
+      }
+      .btn {
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 100vw;
+        padding: 0.3rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        cursor: pointer;
+      }
+      .back-btn {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+      }
+      p {
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+      textarea {
+        width: 20rem;
+        resize: none;
+        border-radius: 0.5rem;
+        border: 1px solid black;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+      }
+    </style>
+    <script>
+      const form = document.querySelector("form");
+      const textarea = document.querySelector("textarea");
+
+      async function form_submit_handler(event) {
+        event.preventDefault();
+        const feedback = form.textarea.value;
+        const date = Date.now();
+        const body = {
+          date: date,
+          reported_personnel: "ground personnel",
+          report_description: feedback,
+        };
+
+        await send_data("/office/failure_report", body);
+        window.location.href = "/ground_personnel/feedback";
+      }
+      async function send_data(route, body) {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        };
+
+        return fetch(route, options);
+      }
+
+      form.addEventListener("submit", form_submit_handler);
+    </script>
+  </body>
+</html>

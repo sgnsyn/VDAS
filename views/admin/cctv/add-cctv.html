@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/Admin/cctv/add-cctv.css" />
+    <script type="module" src="/js/Admin/cctv/add-cctv.js" defer></script>
+    <title>Add CCTV</title>
+  </head>
+  <body>
+    <div class="popup-container backdrop disabled" id="menu-popup-container">
+      <div class="popup-btn-container">
+        <a href="/admin/dashboard" class="btn home-logout-btn home-btn">Home</a>
+        <a href="/logout" class="btn home-logout-btn logout-btn">Logout</a>
+        <button class="btn close-btn" id="close-logout-popup-btn">
+          <img src="/Assets/Icons/close.svg" alt="close" />
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="navbar">
+        <a class="btn back-btn" href="/cctv/management"><img src="/Assets/Icons/back_arrow.svg" alt="back" /></a>
+        <p class="p-titile">
+          <span>Add CCTV</span>
+          <span><img src="/Assets/Icons/add.svg" alt="add-icon" /></span>
+        </p>
+        <button class="btn menu-btn" id="open-logout-popup-btn">
+          <img src="/Assets/Icons/menu.svg" alt="menu" />
+        </button>
+      </div>
+      <div class="content-body-contianer">
+        <form id="add-cctv-form">
+          <div class="input-label">
+            <label for="cctv-name-input">CCTV name:</label>
+            <input
+              class="inp"
+              name="name"
+              type="text"
+              id="cctv-name-input"
+              placeholder="10.240.119.5"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <!-- location managment -->
+
+          <div class="input-label">
+            <label for="cctv-desc-text">Add locations for the CCTV:</label>
+          </div>
+          <div class="locations-container">
+            <div class="location-search-select">
+              <div class="location-search-container">
+                <div class="autocomplete-contianer disabled"></div>
+                <input type="text" placeholder="search location" class="search-inp" />
+              </div>
+              <span>or</span>
+              <div class="select-location-select">
+                <select name="select-location" id="location-select">
+                  <option value="null" disabled selected>Select Location</option>
+                </select>
+                <span class="down-arrow"><img src="/Assets/Icons/down_arrow.svg" alt="" /></span>
+              </div>
+            </div>
+
+            <div class="selected-location-day-container">
+              <div class="selected-location-container selected-location-container-monday" data-day="mo"></div>
+            </div>
+          </div>
+          <!-- location managment -->
+
+          <button class="btn add-btn" id="trigger-confirmation-btn">Add CCTV</button>
+        </form>
+      </div>
+    </div>
+
+    <!--  confirmation popup-->
+    <div class="confirmation-popup-backdrop disabled" id="confirmation-popup-backdrop">
+      <div class="confirmation-popup">
+        <p class="message" id="confirmation-popup-message"></p>
+        <table class="data-container" id="confirmation-popup-data"></table>
+        <div class="btn-container">
+          <button class="btn cancel-btn" id="cancel-confirmation-btn">cancel</button>
+          <button class="btn confirm-btn" id="confirm-confirmation-btn">
+            <span>confirm </span
+            ><img src="/Assets/Icons/spinner.svg" class="disabled" alt="loading-icon" id="spinner-icon" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

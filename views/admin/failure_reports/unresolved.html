@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>unresolved report</title>
+    <link rel="stylesheet" href="/css/Admin/failure_report/unresolved.css" />
+    <script type="module" src="/js/Admin/failure_report/unresolved.js" defer></script>
+  </head>
+  <body>
+    <div class="popup-container backdrop disabled" id="menu-popup-container">
+      <div class="popup-btn-container">
+        <a href="/admin/dashboard" class="btn home-logout-btn home-btn">Home</a>
+        <a href="/logout" class="btn home-logout-btn logout-btn">Logout</a>
+        <button class="btn close-btn" id="close-logout-popup-btn">
+          <img src="/Assets/Icons/close.svg" alt="close" />
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="navbar">
+        <a class="btn back-btn" href="/reports"><img src="/Assets/Icons/back_arrow.svg" alt="back" /></a>
+        <p class="p-titile">
+          <span>Un-resolved reports</span>
+          <span><img src="/Assets/Icons/unresolved.svg" alt="unresolved-icon" /></span>
+        </p>
+        <button class="btn menu-btn" id="open-logout-popup-btn">
+          <img src="/Assets/Icons/menu.svg" alt="menu" />
+        </button>
+      </div>
+      <div class="body-continaer"></div>
+    </div>
+  </body>
+</html>

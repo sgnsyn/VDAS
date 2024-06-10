@@ -11,7 +11,7 @@
   <body>
     <div class="popup-container backdrop disabled" id="menu-popup-container">
       <div class="popup-btn-container">
-        <a href="/ground_personnel/dashboard" class="btn home-logout-btn home-btn">Home</a>
+        <a href="/ground_personnel/feedback" class="btn home-logout-btn home-btn">Feedback</a>
         <a href="/logout" class="btn home-logout-btn logout-btn">Logout</a>
         <button class="btn close-btn" id="close-logout-popup-btn">
           <img src="/Assets/Icons/close.svg" alt="close" />
@@ -21,7 +21,7 @@
     <div class="container">
       <div class="navbar">
         <div><a href="/logout"></a></div>
-        <p class="p-role">Cala Kenya</p>
+        <p class="p-role"><% if(role && username){%><span class="span-username"><%=username%></span><%}%></p>
         <button class="btn menu-btn" id="open-logout-popup-btn">
           <img src="/Assets/Icons/mobile_menu.svg" alt="menu" />
         </button>

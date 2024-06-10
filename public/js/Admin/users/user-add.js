@@ -145,7 +145,8 @@ async function form_handler(event) {
   // if operation is successfull display success message, clear form field and close confirmation popup
   if (result_data.success) {
     set_conf_message(result_data.message, "success");
-    close_popup_conf();
+    await close_popup_conf();
+    window.location.href = "/users/add";
   }
   // if operation is not successfull display erro message,  and close confirmation popup
   if (!result_data.success) {

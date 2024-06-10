@@ -73,8 +73,8 @@ app.use(
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ extended: true, limit: "50  mb" }));
+app.use(bodyParser.json({ limit: "150mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "150mb" }));
 
 app.use(is_authenticated);
 

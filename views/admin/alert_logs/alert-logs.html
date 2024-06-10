@@ -3,9 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/Admin/alert_logs/alert-logs.css" />
+    <script type="module" src="/js/Admin/alert_logs/alert-log.js" defer></script>
+    <title>Alert Logs</title>
   </head>
   <body>
-    <h1>alert logs</h1>
+    <div class="popup-container backdrop disabled" id="menu-popup-container">
+      <div class="popup-btn-container">
+        <a href="/admin/dashboard" class="btn home-logout-btn home-btn">Home</a>
+        <a href="/logout" class="btn home-logout-btn logout-btn">Logout</a>
+        <button class="btn close-btn" id="close-logout-popup-btn">
+          <img src="/Assets/Icons/close.svg" alt="close" />
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="navbar">
+        <a class="btn back-btn" href="/admin/dashboard"><img src="/Assets/Icons/back_arrow.svg" alt="back" /></a>
+        <p class="p-titile">
+          <span>alert logs</span>
+          <span><img src="/Assets/Icons/log.svg" alt="" /></span>
+        </p>
+        <button class="btn menu-btn" id="open-logout-popup-btn">
+          <img src="/Assets/Icons/menu.svg" alt="menu" />
+        </button>
+      </div>
+      <div class="routes-container"></div>
+    </div>
+    <div class="more-info-backdrop disabled">
+      <div class="more-info-container">
+        <div class="description-container">
+          <div>
+            <div class="more-title-value-container title-value-container">
+              <p class="more-title title">Date</p>
+              <p class="more-value-date value">01-05-2024</p>
+            </div>
+            <div class="more-title-value-container title-value-container">
+              <p class="more-title title">Camera ID</p>
+              <p class="more-value-id value">UDKR241JK</p>
+            </div>
+            <div class="more-title-value-container title-value-container">
+              <p class="more-title title">Validity</p>
+              <p class="more-value-validity value">False Negative</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="aler-footage-title">Alert Footage</p>
+          <div class="video-container"></div>
+        </div>
+        <button id="btn-close-info"><img src="/Assets/Icons/close.svg" alt="icon-small" /></button>
+      </div>
+    </div>
   </body>
 </html>

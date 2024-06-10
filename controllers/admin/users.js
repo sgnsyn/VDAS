@@ -4,12 +4,13 @@ const {
   add_user,
   remove_user,
   edit_user,
-
   get_full_user_name,
   get_usernames,
   add_user_shift,
   add_user_location_shift,
+  load_all_users,
 } = require("../../models/admin/user-model");
+
 const validate_user = require("../../util/new-user-validator");
 const { format_role, format_op_shift, format_gp_shift } = require("../../util/format-inputs");
 const { b_hash } = require("../../util/password-hash-compare");
@@ -17,8 +18,14 @@ const { b_hash } = require("../../util/password-hash-compare");
 //@desc get all users
 //@route GET /user
 //@access public
-const load_all_users = (req, res) => {
-  res.status(200).json({ message: "there you go" });
+const get_all_users = (req, res) => {
+  load_all_users()
+    .then((result) => {
+      return res.status(200).json({ success: true, result });
+    })
+    .catch((err) => {
+      return res.status(500).json({ success: false, message: "Internal error, Please try again later." });
+    });
 };
 
 //@desc create new  user
@@ -126,15 +133,6 @@ const update_user = (req, res) => {
   res.status(200).json({ message: `update users of id: ${req.params.id}` });
 };
 
-//@desc delete individual user
-//@route DELETE /user:id
-//@access public
-const delete_user = (req, res) => {
-  const id = req.params.id;
-  remove_user(id);
-  res.status(200).json({ message: `delete user id: ${req.params.id}` });
-};
-
 //@desc get user-management.html
 //@route GET /management
 //@access private
@@ -155,13 +153,37 @@ const add_users_page = async (req, res) => {
 const remove_users_page = async (req, res) => {
   res.sendFile(path.join(__dirname, "../../views/admin/users", "user-remove.html"));
 };
+const edit_users_page = async (req, res) => {
+  res.render("admin/users/user-edit", {
+    role: req.session.user.role,
+    username: req.session.user.username,
+  });
+};
+
+//@desc delete individual user
+//@route DELETE /user:id
+//@access public
+const delete_user = async (req, res) => {
+  const name = req.params.name;
+  if (!name) {
+    return res.status(400).json({ success: false, message: "Invalid entry, Please try again later." });
+  }
+  remove_user(name)
+    .then((result) => {
+      return res.status(200).json({ success: true, message: "User successfully removed" });
+    })
+    .catch((err) => {
+      return res.status(500).json({ success: false, message: "Internal error, Please try again later." });
+    });
+};
 
 module.exports = {
-  load_all_users,
+  get_all_users,
   create_user,
   update_user,
   delete_user,
   user_management_page,
   add_users_page,
   remove_users_page,
+  edit_users_page,
 };

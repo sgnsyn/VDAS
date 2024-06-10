@@ -13,8 +13,8 @@ const search_contianer = document.querySelector(".search-inp-btn");
 let locations = [];
 
 /******************************************** FUNCTION  ***************************************/
-async function load_users() {
-  const result = await fetch("/users");
+async function load_location() {
+  const result = await fetch("/locations");
   const data = await result.json();
   if (data.success) {
     if (isArrayNotEmpty(data.result)) {
@@ -46,8 +46,8 @@ function set_table_data(data) {
   //set the head or the table
   const thead = ` <thead>
   <tr>
-    <td>Username</td>
-    <td>Role</td>
+    <td>cctv Name</td>
+    <td>cctv Description</td>
   </tr>
 </thead>
 `;
@@ -56,16 +56,15 @@ function set_table_data(data) {
   // prepare the table rows using the data
   let trs = "";
   for (let element of data) {
-    trs += `<tr data-name="${element.username}">
-    <td id = "td_name">${element.username}</td>
-    <td id = "td_desc">${element.role}</td>
-    
+    trs += `<tr data-name="${element.name}">
+    <td id = "td_name">${element.name}</td>
+    <td id = "td_desc">${element.description}</td>
     <td class="btn-container">
-      <button class="btn edit-btn" data-name="${element.username}">edit</button
-      ><button class="btn delete-btn" data-name="${element.username}">delete</button>
+      <button class="btn edit-btn" data-name="${element.name}">edit</button
+      ><button class="btn delete-btn" data-name="${element.name}">delete</button>
     </td>
   </tr>`;
-    locations.push(element.username);
+    locations.push(element.name);
   }
 
   // add table rows to the table body and put it in table
@@ -99,12 +98,12 @@ async function delete_handler(event) {
   const td_name = tr.querySelector("#td_name");
   const td_desc = tr.querySelector("#td_desc");
 
-  const username = td_name.textContent;
-  const role = td_desc.textContent;
+  const location_name = td_name.textContent;
+  const location_desc = td_desc.textContent;
 
   // prepare data to be displayed on popup
-  const data = { Username: username, role };
-  const message = "Are you sure you want to delete this user";
+  const data = { "cctv Name": location_name, description: location_desc };
+  const message = "Are you sure you want to delete this stuff";
 
   //open popup and if cancle is triggered close popup
   const result = await display_confirmation_popup(data, message);
@@ -115,7 +114,7 @@ async function delete_handler(event) {
 
   //send data to back end and wait for result
   handle_spinner("start");
-  const delete_result = await request_delete(name, "/users");
+  const delete_result = await request_delete(name, "/locations");
   handle_spinner("stop");
   const result_data = await delete_result.json();
 
@@ -168,6 +167,6 @@ async function search_handler(event) {
 /******************************************** EVENT  ***************************************/
 
 window.addEventListener("load", () => {
-  load_users();
+  load_location();
   popup_handler();
 });

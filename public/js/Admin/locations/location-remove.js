@@ -25,7 +25,7 @@ async function load_location() {
   }
 }
 
-async function requestDelete(id, route) {
+async function request_delete(id, route) {
   const option = {
     method: "DELETE",
   };
@@ -103,7 +103,7 @@ async function delete_handler(event) {
 
   // prepare data to be displayed on popup
   const data = { "Location Name": location_name, description: location_desc };
-  const message = "Are you sure you want to delete this stuff";
+  const message = "Are you sure you want to delete this location";
 
   //open popup and if cancle is triggered close popup
   const result = await display_confirmation_popup(data, message);
@@ -114,7 +114,7 @@ async function delete_handler(event) {
 
   //send data to back end and wait for result
   handle_spinner("start");
-  const delete_result = await requestDelete(name, "/locations");
+  const delete_result = await request_delete(name, "/locations");
   handle_spinner("stop");
   const result_data = await delete_result.json();
 

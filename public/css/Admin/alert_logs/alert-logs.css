@@ -1,0 +1,120 @@
+@import url("../../reset.css");
+@import url("../util/navbar.css");
+@import url("../util/popup-menu.css");
+@import url("../util/grid-body.css");
+
+body {
+  padding-inline: 10%;
+  position: relative;
+}
+
+.routes-container {
+  --width: 19rem;
+  grid-template-columns: repeat(auto-fit, minmax(var(--width), var(--width)));
+}
+.grid-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.375rem 1.625rem;
+  gap: 1rem;
+  height: auto;
+}
+
+.grid-btn:hover {
+  transform: none;
+  cursor: initial;
+}
+.grid-btn.btn:hover {
+  transform: none;
+  cursor: initial;
+}
+
+.title-value-container {
+  /* outline: 1px solid red; */
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.title-value-container .title {
+  width: 10ch;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-bottom: 0.75rem;
+}
+
+.title-value-container .value {
+  text-transform: uppercase;
+}
+.title-value-container .title::after {
+  content: ":";
+}
+
+.more-btn {
+  text-transform: uppercase;
+  background-color: black;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 100vw;
+  align-self: flex-end;
+}
+
+/* backdrop */
+.more-info-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.384);
+  backdrop-filter: blur(2px);
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+}
+
+.more-info-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 3.5rem;
+  width: 80%;
+  max-width: 60rem;
+  box-sizing: content-box;
+  position: relative;
+  border: 2px solid black;
+}
+
+.description-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.description-container .title-value-container {
+  gap: 1.5rem;
+}
+.more-title-value-container {
+  border-bottom: 1px solid black;
+  margin-bottom: 1.25rem;
+}
+.aler-footage-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* disabled */
+.disabled {
+  display: none;
+}
+
+#btn-close-info {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

@@ -1,4 +1,3 @@
-const { compareSync } = require("bcrypt");
 const db_connection = require("../../config/db-connection");
 const get_shift_id = async (shift) => {
   return new Promise((resolve, reject) => {
@@ -141,16 +140,31 @@ const get_location_name = async (locations_id) => {
 };
 
 const save_alert_log = async (data) => {
-  const { date, camera_id, alert_validity, video_path } = data;
-  const query_str = `INSERT INTO alert_log(date, camera_id, alert_validity, footage_directory) VALUES(?,?,?,?)`;
+  const { date, camera_id, alert_validity, video_name } = data;
+  const query_str = `INSERT INTO alert_log(date, camera_id, alert_validity, filename) VALUES(?,?,?,?)`;
 
-  const values = [date, camera_id, alert_validity, video_path];
+  const values = [date, camera_id, alert_validity, video_name];
   db_connection.query(query_str, values, (err, result, fields) => {
     if (err) {
       console.log(err, "error in admin gp-model, save_alert_log");
     }
   });
 };
+
+const save_failure_report = async (data) => {
+  const { date, reported_personnel, report_description } = data;
+  const resolution_status = "unresolved";
+
+  const query_str = `INSERT INTO failure_report (date, reported_personnel, resolution_status, report_description) VALUES (?, ?, ?, ?)`;
+
+  const values = [date, reported_personnel, resolution_status, report_description];
+  db_connection.query(query_str, values, (err, result, fields) => {
+    if (err) {
+      console.log(err, "error in admin gp-model, save_alert_log");
+    }
+  });
+};
+
 module.exports = {
   get_shift_id,
   get_camera_id,
@@ -158,4 +172,5 @@ module.exports = {
   get_users_id,
   get_location_name,
   save_alert_log,
+  save_failure_report,
 };

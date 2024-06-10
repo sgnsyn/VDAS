@@ -8,6 +8,7 @@ const {
   get_users_id,
   get_location_name,
   save_alert_log,
+  save_failure_report,
 } = require("../../models/ground_personnel/gp-model");
 
 const download_video = async (req, res) => {
@@ -61,7 +62,7 @@ const download_video = async (req, res) => {
     }
 
     //getlocations
-    const location_id = await get_locations_id(camera_id);
+    let location_id = await get_locations_id(camera_id);
     if (location_id === "err") {
       console.log("error in controller office.js, loading shift id");
       return;
@@ -70,6 +71,7 @@ const download_video = async (req, res) => {
       console.log("error in controller office.js, couldn't find shift by id");
       return;
     }
+    location_id = Array.from(new Set(location_id));
 
     // from user_location_shift get user id where location_id and shift_id
     const users_id = await get_users_id(location_id, shift_id);
@@ -95,8 +97,9 @@ const download_video = async (req, res) => {
         }
       }
     }
+
     //date, camera_id, alert_validity, video_path
-    save_alert_log({ date, camera_id, alert_validity, video_path });
+    save_alert_log({ date, camera_id, alert_validity, video_name });
 
     return res.status(200).json({ success: true, message: "got your video" });
   } else {
@@ -104,4 +107,8 @@ const download_video = async (req, res) => {
   }
 };
 
-module.exports = { download_video };
+const put_failure_report = async (req, res) => {
+  save_failure_report(req.body);
+  return res.status(200).json({ success: true, message: "got your video" });
+};
+module.exports = { download_video, put_failure_report };

@@ -4,13 +4,16 @@ const path = require("path");
 //@route GET /dashboard
 //@access private
 const get_dashboard_page = async (req, res) => {
-  res.sendFile(path.join(__dirname, "../../views/ground_personnel", "dashboard.html"));
+  res.render("ground_personnel/dashboard", {
+    role: req.session.user.role,
+    username: req.session.user.username,
+  });
 };
 //@desc get login.html
-//@route GET /dashboard
+//@route GET /feedbck
 //@access private
-const get_alert_page = async (req, res) => {
-  res.sendFile(path.join(__dirname, "../../views/ground_personnel", "alert.html"));
+const get_feedback_page = async (req, res) => {
+  res.sendFile(path.join(__dirname, "../../views/ground_personnel", "feedback.html"));
 };
 
 const get_id = async (req, res) => {
@@ -25,4 +28,4 @@ const get_video = async (req, res) => {
   res.sendFile(video_dir);
 };
 
-module.exports = { get_alert_page, get_dashboard_page, get_id, get_video };
+module.exports = { get_feedback_page, get_dashboard_page, get_id, get_video };
