@@ -88,7 +88,7 @@ app.use("/locations", is_authorized("admin"), require("./routes/admin/locations"
 app.use("/reports", is_authorized("admin"), require("./routes/admin/reports"));
 
 //ground personnel routes
-app.use("/ground_personnel", require("./routes/ground_personnel/dashboard"));
+app.use("/ground_personnel", is_authorized("ground personnel"), require("./routes/ground_personnel/dashboard"));
 
 //office routes
 app.use("/office", require("./routes/office_personnel/office"));

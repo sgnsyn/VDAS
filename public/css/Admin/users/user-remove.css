@@ -17,7 +17,7 @@ body {
 }
 /* search and filter  */
 .search-filter-container {
-  padding-block: 2rem 1.8rem;
+  padding-block: 1.5rem 0.5rem;
   display: flex;
   align-items: center;
   justify-content: flex-end;

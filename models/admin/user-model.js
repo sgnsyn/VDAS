@@ -27,16 +27,6 @@ VALUE(?, ?, ?, ?, ?, ?)`;
 
 // updates user's record
 
-const edit_user = (id, username, psk, role) => {
-  const query_str = `UPDATE users SET username = ?, psk = ?, role = ? WHERE id = ?`;
-  const values = [username, psk, role, id];
-  db_connection.query(query_str, values, (err, result, fields) => {
-    if (err) {
-      console.log("error in admin user-model, edit_user", err);
-    }
-  });
-};
-
 // fetches user password by username
 const get_credential = async (username) => {
   return new Promise((resolve, reject) => {
@@ -219,6 +209,7 @@ const add_user_location_shift = async (user_id, formatted_shift) => {
   }
   return result;
 };
+
 const load_all_users = async () => {
   return new Promise((resolve, reject) => {
     const query_str = "SELECT username, role FROM users ORDER BY id DESC";
@@ -250,7 +241,6 @@ const remove_user = async (username) => {
 module.exports = {
   add_user,
   get_usernames,
-  edit_user,
   remove_user,
   load_all_users,
   get_credential,

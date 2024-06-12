@@ -122,17 +122,6 @@ const create_user = async (req, res) => {
   return res.status(200).json({ success: true, message: "user successfully added." });
 };
 
-//@desc update individual user
-//@route PUT /user:id
-//@access public
-const update_user = (req, res) => {
-  const id = req.params.id;
-  const { username, psk, role } = req.body;
-
-  edit_user(id, username, psk, role);
-  res.status(200).json({ message: `update users of id: ${req.params.id}` });
-};
-
 //@desc get user-management.html
 //@route GET /management
 //@access private
@@ -180,7 +169,6 @@ const delete_user = async (req, res) => {
 module.exports = {
   get_all_users,
   create_user,
-  update_user,
   delete_user,
   user_management_page,
   add_users_page,

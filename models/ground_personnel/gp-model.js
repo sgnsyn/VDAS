@@ -60,7 +60,6 @@ const get_users_id = async (locations_id, shift_id) => {
   try {
     for (let elt of locations_id) {
       const location_id = elt.location_id;
-
       const query_str = `SELECT user_id FROM user_location_shift WHERE shift_id = ? AND location_id = ?`;
       const values = [shift_id, location_id];
 

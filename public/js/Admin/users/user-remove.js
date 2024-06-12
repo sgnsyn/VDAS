@@ -31,6 +31,12 @@ async function request_delete(id, route) {
   };
   return fetch(`${route}/${encodeURIComponent(id)}`, option);
 }
+async function request_edit_page(id, route) {
+  const option = {
+    method: "GET",
+  };
+  return fetch(`${route}/${encodeURIComponent(id)}`, option);
+}
 
 function set_table_data(data) {
   //clear previous values from the table
@@ -61,8 +67,7 @@ function set_table_data(data) {
     <td id = "td_desc">${element.role}</td>
     
     <td class="btn-container">
-      <button class="btn edit-btn" data-name="${element.username}">edit</button
-      ><button class="btn delete-btn" data-name="${element.username}">delete</button>
+      <button class="btn delete-btn" data-name="${element.username}">delete</button>
     </td>
   </tr>`;
     locations.push(element.username);
@@ -133,7 +138,7 @@ async function delete_handler(event) {
 function edit_handler(event) {
   const btn = event.target;
   const name = btn.getAttribute("data-name");
-  console.log("edit", name);
+  request_edit_page(name, "/edit/users");
 }
 
 async function search_handler(event) {

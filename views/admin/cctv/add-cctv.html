@@ -28,13 +28,16 @@
           <img src="/Assets/Icons/menu.svg" alt="menu" />
         </button>
       </div>
+      <div id="error-p-contianer">
+        <p id="error-p"></p>
+      </div>
       <div class="content-body-contianer">
         <form id="add-cctv-form">
           <div class="input-label">
-            <label for="cctv-name-input">CCTV name:</label>
+            <label for="cctv-name-input">CCTV IP:</label>
             <input
               class="inp"
-              name="name"
+              name="camera"
               type="text"
               id="cctv-name-input"
               placeholder="10.240.119.5"
@@ -43,10 +46,11 @@
             />
           </div>
           <!-- location managment -->
-
+          <div class="selected-location-container"></div>
           <div class="input-label">
             <label for="cctv-desc-text">Add locations for the CCTV:</label>
           </div>
+
           <div class="locations-container">
             <div class="location-search-select">
               <div class="location-search-container">
@@ -87,5 +91,8 @@
         </div>
       </div>
     </div>
+
+    <input type="text" id="error-inp" tabindex="-1" />
+    <!-- erro p checker -->
   </body>
 </html>

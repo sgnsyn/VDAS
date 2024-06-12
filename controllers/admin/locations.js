@@ -43,15 +43,11 @@ const add_location = async (req, res) => {
       if (result) {
         return res.status(200).json({ success: true, message: "Location successfully added." });
       } else {
-        return res
-          .status(500)
-          .json({ success: false, message: "Internal error, try again later." });
+        return res.status(500).json({ success: false, message: "Internal error, try again later." });
       }
     }
   } else {
-    return res
-      .status(401)
-      .json({ success: false, message: "Invalid entry , please try again with valid value." });
+    return res.status(401).json({ success: false, message: "Invalid entry , please try again with valid value." });
   }
 };
 
@@ -64,31 +60,25 @@ const load_all_location = async (req, res) => {
       return res.status(200).json({ success: true, result });
     })
     .catch((err) => {
-      return res
-        .status(500)
-        .json({ success: false, message: "Internal error, Please try again later." });
+      return res.status(500).json({ success: false, message: "Internal error, Please try again later." });
     });
 };
 
-//@desc delete location
+//@desc delete locatiqson
 //@route delete/locations/:name
 //@access private
 
 const delete_location = async (req, res) => {
   const name = req.params.name;
   if (!name) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Invalid entry, Please try again later." });
+    return res.status(400).json({ success: false, message: "Invalid entry, Please try again later." });
   }
   remove_location(name)
     .then((result) => {
       return res.status(200).json({ success: true, message: "Location successfully removed" });
     })
     .catch((err) => {
-      return res
-        .status(500)
-        .json({ success: false, message: "Internal error, Please try again later." });
+      return res.status(500).json({ success: false, message: "Internal error, Please try again later." });
     });
 };
 

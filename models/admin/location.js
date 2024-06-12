@@ -26,12 +26,11 @@ const check_location = (name) => {
       }
       console.log(result, "reslt");
       for (let elt of result) {
-        console.log(elt.name === name);
         if (elt.name === name) {
           return resolve(true);
         }
       }
-      console.log("i executed");
+
       return resolve(false);
     });
   });

@@ -14,8 +14,9 @@ let locations = [];
 
 /******************************************** FUNCTION  ***************************************/
 async function load_location() {
-  const result = await fetch("/locations");
+  const result = await fetch("/cctv");
   const data = await result.json();
+  console.log(data);
   if (data.success) {
     if (isArrayNotEmpty(data.result)) {
       set_table_data(data.result);
@@ -23,6 +24,7 @@ async function load_location() {
       set_table_data(false);
     }
   }
+  console.log(locations);
 }
 
 async function request_delete(id, route) {
@@ -46,8 +48,8 @@ function set_table_data(data) {
   //set the head or the table
   const thead = ` <thead>
   <tr>
-    <td>cctv Name</td>
-    <td>cctv Description</td>
+    <td>CCTV IP</td>
+    <td>CCTV ID</td>
   </tr>
 </thead>
 `;
@@ -56,15 +58,14 @@ function set_table_data(data) {
   // prepare the table rows using the data
   let trs = "";
   for (let element of data) {
-    trs += `<tr data-name="${element.name}">
-    <td id = "td_name">${element.name}</td>
-    <td id = "td_desc">${element.description}</td>
+    trs += `<tr data-name="${element.ip}">
+    <td id = "td_name">${element.ip}</td>
+    <td id = "td_desc">${element.id}</td>
     <td class="btn-container">
-      <button class="btn edit-btn" data-name="${element.name}">edit</button
-      ><button class="btn delete-btn" data-name="${element.name}">delete</button>
+      <button class="btn delete-btn" data-name="${element.ip}">delete</button>
     </td>
   </tr>`;
-    locations.push(element.name);
+    locations.push(element.id);
   }
 
   // add table rows to the table body and put it in table
@@ -75,10 +76,8 @@ function set_table_data(data) {
 
   //   get delete and edit btns and add event listeners
   const delete_btns = document.querySelectorAll(".delete-btn");
-  const edit_btns = document.querySelectorAll(".edit-btn");
 
   delete_btns.forEach((btn) => btn.addEventListener("click", delete_handler));
-  edit_btns.forEach((btn) => btn.addEventListener("click", edit_handler));
 
   //add event listener to search
   search_inp.addEventListener("input", search_handler);
@@ -102,8 +101,8 @@ async function delete_handler(event) {
   const location_desc = td_desc.textContent;
 
   // prepare data to be displayed on popup
-  const data = { "cctv Name": location_name, description: location_desc };
-  const message = "Are you sure you want to delete this stuff";
+  const data = { "cctv Name": location_name, ip: location_desc };
+  const message = "Are you sure you want to delete this CCTV";
 
   //open popup and if cancle is triggered close popup
   const result = await display_confirmation_popup(data, message);
@@ -129,12 +128,6 @@ async function delete_handler(event) {
   }
 }
 
-function edit_handler(event) {
-  const btn = event.target;
-  const name = btn.getAttribute("data-name");
-  console.log("edit", name);
-}
-
 async function search_handler(event) {
   //get the value being inputed
   const search_inp = event.target;
@@ -142,6 +135,7 @@ async function search_handler(event) {
 
   //if input value is empty return set tr to active
   const trs = document.querySelectorAll("tbody tr");
+
   if (keyword === "") {
     trs.forEach((tr) => tr.classList.remove("disabled"));
     return;
@@ -150,6 +144,7 @@ async function search_handler(event) {
   // only display loction that includes keyword
   trs.forEach((tr) => tr.classList.add("disabled"));
   for (let elt of locations) {
+    console.log(elt);
     if (elt.toLowerCase().includes(keyword.toLowerCase())) {
       trs.forEach((tr) => {
         if (tr.getAttribute("data-name").toLocaleLowerCase() === elt.toLocaleLowerCase()) {

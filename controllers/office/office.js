@@ -27,14 +27,14 @@ const download_video = async (req, res) => {
 
     const data = JSON.parse(json_data);
     console.log("video successfully saved", data);
-    const dat_fake = {
-      camera_ip: "10:190:18:40",
-      date: {
-        day: "saturday",
-        time: "00:21:34",
-      },
-      alert_validity: "TP",
-    };
+    // const dat_fake = {
+    //   camera_ip: "10:190:18:40",
+    //   date: {
+    //     day: "saturday",
+    //     time: "00:21:34",
+    //   },
+    //   alert_validity: "TP",
+    // };
     //get
     const shift = date_to_shift_convertor(data.date);
     const camera_ip = data.camera_ip.trim();

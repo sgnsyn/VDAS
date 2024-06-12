@@ -183,6 +183,42 @@ label[for="search-location-input"] {
   font-weight: light;
 }
 
+/* errorp  */
+#error-p-contianer {
+  margin-top: 2rem;
+  display: block;
+  position: relative;
+}
+#error-p-contianer p {
+  position: absolute;
+  min-width: 25ch;
+  top: 50%;
+  left: 10%;
+  transform: translate(0%, -50%);
+}
+#error-p {
+  color: var(--error-color);
+  text-align: center;
+  font-weight: bold;
+}
+#error-inp {
+  border: none;
+  background-color: transparent;
+  outline: 1px solid red;
+  position: absolute;
+  top: -3rem;
+  left: -3rem;
+}
+#error-inp:focus {
+  border: none;
+  outline: 1px solid red;
+  background-color: transparent;
+  pointer-events: none;
+}
+#error-p[disabled] {
+  background-color: transparent;
+}
+
 .disabled {
   display: none;
 }
